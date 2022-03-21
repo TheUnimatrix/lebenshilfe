@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping>
+	<class name="de.lebenshilfe_schleiz.foodorder.models.OrderPosition">
+		
+		<!-- zusammengesetzter Primärschlüssel -->
+		<composite-id>
+			<key-many-to-one name="foodOrder"
+				class="de.lebenshilfe_schleiz.foodorder.models.FoodOrder"/>
+			<key-property name="position" type="java.lang.Integer"/>
+		</composite-id>
+		
+		<!-- 
+		<id name="position" type="java.lang.Integer">
+			<generator class="identity"/>
+		</id> -->
+		
+		<property name="food" type="java.lang.Character"/>
+	</class>
+</hibernate-mapping>

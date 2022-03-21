@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		https://jakarta.ee/xml/ns/jakartaee
+		https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+	
+	<display-name>Essenbestellung</display-name>
+	
+	<listener>
+		<listener-class>de.lebenshilfe_schleiz.foodorder.listeners.HibernateConfigurationListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>start-page-servlet</servlet-name>
+		<servlet-class>de.lebenshilfe_schleiz.foodorder.servlets.StartPageServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>food-details-servlet</servlet-name>
+		<servlet-class>de.lebenshilfe_schleiz.foodorder.servlets.FoodDetailsServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>start-page-servlet</servlet-name>
+		<url-pattern>/startseite.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>food-details-servlet</servlet-name>
+		<url-pattern>/uebersicht.html</url-pattern>
+	</servlet-mapping>
+	
+	<error-page>
+		<!-- Fehlerseite für HTTP-Statuscode 404 (Seite nicht gefunden) -->
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/errors/404.jsp</location>
+	</error-page>
+	
+</web-app>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping>
+	<class name="de.lebenshilfe_schleiz.foodorder.models.Address">
+	
+		<!-- Primärschlüssel -->
+		<id name="addressId" type="java.lang.Integer">
+			<generator class="identity"/>
+		</id>
+		
+		<property name="street" type="java.lang.String" length="30"/>
+		<property name="postalCode" type="java.lang.String" length="5"/>
+		<property name="city" type="java.lang.String" length="30"/>
+	</class>
+</hibernate-mapping>
