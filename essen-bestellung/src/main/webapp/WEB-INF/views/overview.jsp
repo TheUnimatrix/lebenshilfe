@@ -84,6 +84,8 @@
 				</tfoot>
 			</table>
 			
+			<form action="" method="post"></form>
+			
 			<button type="button" class="btn btn-primary float-end">
 				Verbindlich bestellen
 			</button>
