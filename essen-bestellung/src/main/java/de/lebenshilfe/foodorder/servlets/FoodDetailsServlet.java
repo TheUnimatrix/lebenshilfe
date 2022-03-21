@@ -97,8 +97,8 @@ public class FoodDetailsServlet extends HttpServlet {
 		
 		//System.out.println(completeOrderArray);
 		
-		// Setze Bestellung in Request
-		req.setAttribute("order-array", completeOrderArray);
+		// Setze Bestellung in Session
+		req.getSession().setAttribute("order-array", completeOrderArray);
 		
 		// Zeige Übersichtsseite an
 		req.getRequestDispatcher("/WEB-INF/views/overview.jsp").forward(req, resp);
