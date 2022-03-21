@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 
 public class FoodOrder {
 	
-	private Long orderId;
+	private Integer orderId;
 	
 	private LocalDateTime orderDateTime;
 	
 	private User user;
 	
-	public Long getOrderId() {
+	public Integer getOrderId() {
 		return orderId;
 	}
 
@@ -22,7 +22,7 @@ public class FoodOrder {
 		return user;
 	}
 
-	public void setOrderId(Long orderId) {
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 

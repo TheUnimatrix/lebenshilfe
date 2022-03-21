@@ -7,18 +7,30 @@
 	<class name="de.lebenshilfe.foodorder.models.OrderPosition">
 		
 		<!-- zusammengesetzter Primärschlüssel -->
+		<!-- 
 		<composite-id>
 			<key-many-to-one name="foodOrder"
 				class="de.lebenshilfe.foodorder.models.FoodOrder"/>
 			<key-property name="position" type="java.lang.Integer"/>
 		</composite-id>
+		-->
+		
+		<id name="orderPositionId" type="java.lang.Integer">
+			<generator class="identity"/>
+		</id>
 		
 		<!-- 
 		<id name="position" type="java.lang.Integer">
 			<generator class="identity"/>
 		</id> -->
 		
-		<property name="food" type="java.lang.Character"/>
+		<property name="food" type="java.lang.String" length="1"/>
+		<property name="foodId" type="java.lang.Integer"/>
 		<property name="foodDate" type="java.time.LocalDate"/>
+		<property name="amount" type="java.lang.Integer"/>
+		<property name="price" type="java.lang.Double"/>
+		
+		<many-to-one name="foodOrder" cascade="all"
+				class="de.lebenshilfe.foodorder.models.FoodOrder"/>
 	</class>
 </hibernate-mapping>

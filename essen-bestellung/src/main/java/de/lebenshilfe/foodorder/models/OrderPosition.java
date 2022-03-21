@@ -7,23 +7,33 @@ public class OrderPosition implements Serializable {
 	
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
+	
+	private Integer orderPositionId;
+	
+	public Integer getOrderPositionId() {
+		return orderPositionId;
+	}
+	
+	public void setOrderPositionId(Integer orderPositionId) {
+		this.orderPositionId = orderPositionId;
+	}
 
 	private FoodOrder foodOrder;
 	
 	private int position;
 	
-	private char food;
+	private String food;
 	
 	private double price;
 	
 	private int amount;
 	
+	private LocalDate foodDate;
+	
 	private int day;
 	
 	private int foodId;
 	
-	private LocalDate foodDate;
-
 	public FoodOrder getFoodOrder() {
 		return foodOrder;
 	}
@@ -32,12 +42,24 @@ public class OrderPosition implements Serializable {
 		return position;
 	}
 
-	public char getFood() {
+	public String getFood() {
 		return food;
 	}
 
 	public double getPrice() {
 		return price;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+	
+	public LocalDate getFoodDate() {
+		return foodDate;
+	}
+	
+	public int getFoodId() {
+		return foodId;
 	}
 
 	public void setFoodOrder(FoodOrder foodOrder) {
@@ -48,20 +70,24 @@ public class OrderPosition implements Serializable {
 		this.position = position;
 	}
 
-	public void setFood(char food) {
+	public void setFood(String food) {
 		this.food = food;
 	}
 	
-	public LocalDate getFoodDate() {
-		return foodDate;
+	public void setPrice(double price) {
+		this.price = price;
 	}
-
+	
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	
 	public void setFoodDate(LocalDate foodDate) {
 		this.foodDate = foodDate;
 	}
-
-	public void setPrice(double price) {
-		this.price = price;
+	
+	public void setFoodId(int foodId) {
+		this.foodId = foodId;
 	}
 	
 	@Override
