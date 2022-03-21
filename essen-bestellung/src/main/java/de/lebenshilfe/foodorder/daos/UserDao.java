@@ -16,6 +16,21 @@ public class UserDao {
 		Transaction tx = session.beginTransaction();
 		session.save(user);
 		tx.commit();
+		
+		session.close();
+	}
+	
+	public User getUserByUserId(Long userId) {
+		SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		
+//		Transaction tx = session.beginTransaction();
+		User user = session.get(User.class, userId);
+		
+//		tx.commit();
+		session.close();
+		
+		return user;
 	}
 	
 }

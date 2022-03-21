@@ -16,6 +16,8 @@ public class AddressDao {
 		Transaction tx = session.beginTransaction();
 		session.saveOrUpdate(address);
 		tx.commit();
+		
+		session.close();
 	}
 
 }
