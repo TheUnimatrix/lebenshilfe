@@ -4,12 +4,12 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 	
 <hibernate-mapping>
-	<class name="de.lebenshilfe_schleiz.foodorder.models.OrderPosition">
+	<class name="de.lebenshilfe.foodorder.models.OrderPosition">
 		
 		<!-- zusammengesetzter Primärschlüssel -->
 		<composite-id>
 			<key-many-to-one name="foodOrder"
-				class="de.lebenshilfe_schleiz.foodorder.models.FoodOrder"/>
+				class="de.lebenshilfe.foodorder.models.FoodOrder"/>
 			<key-property name="position" type="java.lang.Integer"/>
 		</composite-id>
 		
@@ -19,5 +19,6 @@
 		</id> -->
 		
 		<property name="food" type="java.lang.Character"/>
+		<property name="foodDate" type="java.time.LocalDate"/>
 	</class>
 </hibernate-mapping>

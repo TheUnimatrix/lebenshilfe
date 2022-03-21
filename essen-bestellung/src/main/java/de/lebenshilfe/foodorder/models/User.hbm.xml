@@ -4,7 +4,7 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 	
 <hibernate-mapping>
-	<class name="de.lebenshilfe_schleiz.foodorder.models.User">
+	<class name="de.lebenshilfe.foodorder.models.User">
 		
 		<!-- Primärschlüssel -->
 		<id name="userId" type="java.lang.Long">
@@ -17,8 +17,8 @@
 		
 		<!-- Fremdschlüssel -->
 		<many-to-one name="deliveryAddress" not-null="true" cascade="all"
-			class="de.lebenshilfe_schleiz.foodorder.models.Address"/>
+			class="de.lebenshilfe.foodorder.models.Address"/>
 		<many-to-one name="billingAddress" not-null="true" cascade="all"
-			class="de.lebenshilfe_schleiz.foodorder.models.Address"/>
+			class="de.lebenshilfe.foodorder.models.Address"/>
 	</class>
 </hibernate-mapping>
