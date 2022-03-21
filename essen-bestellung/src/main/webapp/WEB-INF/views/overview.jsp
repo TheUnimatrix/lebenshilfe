@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<c:set var="orderArray" value='${requestScope["order-array"]}'/>
+<c:set var="orderArray" value='${sessionScope["order-array"]}'/>
 <c:set var="sum" value="${0}"/>
 
 <!DOCTYPE html>
