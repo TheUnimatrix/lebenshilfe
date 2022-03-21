@@ -14,7 +14,7 @@
 		<property name="orderDateTime" type="java.time.LocalDateTime"/>
 		
 		<!-- Fremdschlüssel -->
-		<many-to-one name="user" not-null="true"
+		<many-to-one name="user" not-null="true" cascade="all"
 			class="de.lebenshilfe.foodorder.models.User"/>
 	</class>
 </hibernate-mapping>
