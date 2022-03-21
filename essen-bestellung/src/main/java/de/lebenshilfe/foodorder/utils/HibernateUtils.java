@@ -3,6 +3,7 @@ package de.lebenshilfe.foodorder.utils;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.spi.ServiceException;
 
 import de.lebenshilfe.foodorder.daos.UserDao;
 import de.lebenshilfe.foodorder.models.Address;
@@ -12,7 +13,7 @@ public class HibernateUtils {
 
 	private static SessionFactory sessionFactory;
 
-	public static void initSessionFactory() {
+	public static void initSessionFactory() throws ServiceException {
 		if (getSessionFactory() == null) {
 			Configuration cfg = new Configuration();
 			cfg.setPhysicalNamingStrategy(
@@ -21,7 +22,6 @@ public class HibernateUtils {
 
 			sessionFactory = cfg.buildSessionFactory();
 		}
-		
 		
 		Address addr1 = new Address();
 		addr1.setStreet("Komtursteig 6");
