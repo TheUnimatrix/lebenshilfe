@@ -1,11 +1,11 @@
-package de.lebenshilfe_schleiz.foodorder.daos;
+package de.lebenshilfe.foodorder.daos;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import de.lebenshilfe_schleiz.foodorder.models.Address;
-import de.lebenshilfe_schleiz.foodorder.utils.HibernateUtils;
+import de.lebenshilfe.foodorder.models.Address;
+import de.lebenshilfe.foodorder.utils.HibernateUtils;
 
 public class AddressDao {
 

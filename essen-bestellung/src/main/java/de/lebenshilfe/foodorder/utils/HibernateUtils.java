@@ -1,12 +1,12 @@
-package de.lebenshilfe_schleiz.foodorder.utils;
+package de.lebenshilfe.foodorder.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
 import org.hibernate.cfg.Configuration;
 
-import de.lebenshilfe_schleiz.foodorder.daos.UserDao;
-import de.lebenshilfe_schleiz.foodorder.models.Address;
-import de.lebenshilfe_schleiz.foodorder.models.User;
+import de.lebenshilfe.foodorder.daos.UserDao;
+import de.lebenshilfe.foodorder.models.Address;
+import de.lebenshilfe.foodorder.models.User;
 
 public class HibernateUtils {
 

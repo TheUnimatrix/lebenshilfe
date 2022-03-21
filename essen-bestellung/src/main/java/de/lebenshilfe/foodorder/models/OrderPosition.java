@@ -1,6 +1,7 @@
-package de.lebenshilfe_schleiz.foodorder.models;
+package de.lebenshilfe.foodorder.models;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class OrderPosition implements Serializable {
 	
@@ -20,6 +21,8 @@ public class OrderPosition implements Serializable {
 	private int day;
 	
 	private int foodId;
+	
+	private LocalDate foodDate;
 
 	public FoodOrder getFoodOrder() {
 		return foodOrder;
@@ -48,6 +51,14 @@ public class OrderPosition implements Serializable {
 	public void setFood(char food) {
 		this.food = food;
 	}
+	
+	public LocalDate getFoodDate() {
+		return foodDate;
+	}
+
+	public void setFoodDate(LocalDate foodDate) {
+		this.foodDate = foodDate;
+	}
 
 	public void setPrice(double price) {
 		this.price = price;
@@ -55,18 +66,6 @@ public class OrderPosition implements Serializable {
 	
 	@Override
 	public boolean equals(Object obj) {
-		/*
-		// Überprüfe, ob Objekt vom Typ dieser Klasse ist
-		if (!(obj instanceof OrderPosition))
-			return false;
-		
-		OrderPosition op = (OrderPosition)obj;
-		
-		// Objekte stimmen überein, wenn die Schlüssel passen
-		return op.getPosition() == this.getPosition()
-				&& op.getFoodOrder().getOrderId() == this.getFoodOrder().getOrderId();
-		//*/
-		
 		return super.equals(obj);
 	}
 	

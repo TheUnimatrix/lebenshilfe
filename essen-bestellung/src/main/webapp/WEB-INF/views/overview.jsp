@@ -84,11 +84,11 @@
 				</tfoot>
 			</table>
 			
-			<form action="" method="post"></form>
-			
-			<button type="button" class="btn btn-primary float-end">
-				Verbindlich bestellen
-			</button>
+			<form action="abschluss.html" method="post">
+				<input type="hidden" name="input-test" value="5">
+				<input type="submit" name="button-order-2" class="btn btn-primary float-end"
+					value="Verbindlich bestellen">
+			</form>
 		</div>
 	</body>
 </html>

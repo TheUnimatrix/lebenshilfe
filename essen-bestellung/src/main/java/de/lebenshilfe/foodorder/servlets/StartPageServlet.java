@@ -1,4 +1,4 @@
-package de.lebenshilfe_schleiz.foodorder.servlets;
+package de.lebenshilfe.foodorder.servlets;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import de.lebenshilfe_schleiz.foodorder.utils.JSONUtils;
+import de.lebenshilfe.foodorder.utils.JSONUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

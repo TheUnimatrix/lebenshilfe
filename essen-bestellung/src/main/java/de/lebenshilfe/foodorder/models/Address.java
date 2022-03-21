@@ -1,4 +1,4 @@
-package de.lebenshilfe_schleiz.foodorder.models;
+package de.lebenshilfe.foodorder.models;
 
 public class Address {
 	

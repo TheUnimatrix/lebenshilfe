@@ -1,4 +1,4 @@
-package de.lebenshilfe_schleiz.foodorder.utils;
+package de.lebenshilfe.foodorder.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,6 +1,6 @@
-package de.lebenshilfe_schleiz.foodorder.listeners;
+package de.lebenshilfe.foodorder.listeners;
 
-import de.lebenshilfe_schleiz.foodorder.utils.HibernateUtils;
+import de.lebenshilfe.foodorder.utils.HibernateUtils;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 

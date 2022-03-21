@@ -17,9 +17,9 @@
         <property name="hbm2ddl.auto">create</property>
         
          <!-- Hibernate-Mappings -->
-        <mapping resource="de/lebenshilfe_schleiz/foodorder/models/Address.hbm.xml"/>
-        <mapping resource="de/lebenshilfe_schleiz/foodorder/models/User.hbm.xml"/>
-        <mapping resource="de/lebenshilfe_schleiz/foodorder/models/FoodOrder.hbm.xml"/>
-        <mapping resource="de/lebenshilfe_schleiz/foodorder/models/OrderPosition.hbm.xml"/>
+        <mapping resource="de/lebenshilfe/foodorder/models/Address.hbm.xml"/>
+        <mapping resource="de/lebenshilfe/foodorder/models/User.hbm.xml"/>
+        <mapping resource="de/lebenshilfe/foodorder/models/FoodOrder.hbm.xml"/>
+        <mapping resource="de/lebenshilfe/foodorder/models/OrderPosition.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

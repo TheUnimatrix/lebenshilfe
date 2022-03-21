@@ -1,6 +1,8 @@
-package de.lebenshilfe_schleiz.foodorder.servlets;
+package de.lebenshilfe.foodorder.servlets;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,6 +25,19 @@ public class FoodDetailsServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+//		System.out.println(req.getParameter("button-order"));
+//		System.out.println(req.getParameter("button-order-2"));
+		
+		Map<String, String[]> params = req.getParameterMap();
+		
+		for (Entry<String, String[]> mapEntry : params.entrySet()) {
+//			System.out.println(mapEntry.getKey() + " (" + mapEntry.getValue().length + ")");
+			
+			for (String s : mapEntry.getValue()) {
+//				System.out.println("\t-> " + s);
+			}
+		}
 		
 		// JSON-Array für die komplette Bestellung des Kunden
 		JSONArray completeOrderArray = new JSONArray();

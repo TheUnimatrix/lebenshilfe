@@ -1,21 +1,21 @@
-package de.lebenshilfe_schleiz.foodorder.models;
+package de.lebenshilfe.foodorder.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class FoodOrder {
 	
 	private Long orderId;
 	
-	private Date orderDate;
+	private LocalDateTime orderDateTime;
 	
 	private User user;
-
+	
 	public Long getOrderId() {
 		return orderId;
 	}
 
-	public Date getOrderDate() {
-		return orderDate;
+	public LocalDateTime getOrderDateTime() {
+		return orderDateTime;
 	}
 
 	public User getUser() {
@@ -26,8 +26,8 @@ public class FoodOrder {
 		this.orderId = orderId;
 	}
 
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
+	public void setOrderDateTime(LocalDateTime orderDateTime) {
+		this.orderDateTime = orderDateTime;
 	}
 
 	public void setUser(User user) {
