@@ -6,12 +6,11 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.spi.ServiceException;
 
 import de.lebenshilfe.foodorder.daos.AddressDao;
-import de.lebenshilfe.foodorder.daos.RoleDao;
 import de.lebenshilfe.foodorder.daos.UserDao;
+import de.lebenshilfe.foodorder.enums.Role;
 import de.lebenshilfe.foodorder.models.Address;
 import de.lebenshilfe.foodorder.models.FoodOrder;
 import de.lebenshilfe.foodorder.models.OrderPosition;
-import de.lebenshilfe.foodorder.models.Role;
 import de.lebenshilfe.foodorder.models.User;
 
 public class HibernateUtils {
