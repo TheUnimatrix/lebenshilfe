@@ -9,12 +9,16 @@ import java.util.GregorianCalendar;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import de.lebenshilfe.foodorder.daos.UserDao;
+import de.lebenshilfe.foodorder.models.User;
 import de.lebenshilfe.foodorder.utils.JSONUtils;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet(urlPatterns = "/startseite.html")
 public class StartPageServlet extends HttpServlet {
 
 	/** serialVersionUID */
@@ -22,6 +26,14 @@ public class StartPageServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		UserDao userDao = new UserDao();
+		User user = userDao.getUserByUserId(1);
+		
+//		System.out.println(user);
+		
+		// Speichere Nutzer in Session ab
+		req.getSession().setAttribute("user", user);
+		
 		req.getRequestDispatcher("/WEB-INF/views/startseite.jsp").forward(req, resp);
 	}
 

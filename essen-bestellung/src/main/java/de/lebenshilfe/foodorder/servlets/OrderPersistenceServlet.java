@@ -12,10 +12,12 @@ import de.lebenshilfe.foodorder.models.FoodOrder;
 import de.lebenshilfe.foodorder.models.OrderPosition;
 import de.lebenshilfe.foodorder.models.User;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet(urlPatterns = "/abschluss.html")
 public class OrderPersistenceServlet extends HttpServlet {
 
 	/** serialVersionUID */
@@ -61,7 +63,7 @@ public class OrderPersistenceServlet extends HttpServlet {
 				currentOrderPosition.setPrice(price);
 				currentOrderPosition.setFoodOrder(foodOrder);
 				
-				orderPositionDao.saveOrUpdateObject(currentOrderPosition);
+				orderPositionDao.saveOrUpdateOrderPosition(currentOrderPosition);
 			}
 		}
 		

@@ -1,17 +1,17 @@
 package de.lebenshilfe.foodorder.servlets;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet(urlPatterns = "/uebersicht.html")
 public class FoodDetailsServlet extends HttpServlet {
 
 	/** serialVersionUID */
@@ -29,6 +29,7 @@ public class FoodDetailsServlet extends HttpServlet {
 //		System.out.println(req.getParameter("button-order"));
 //		System.out.println(req.getParameter("button-order-2"));
 		
+		/*
 		Map<String, String[]> params = req.getParameterMap();
 		
 		for (Entry<String, String[]> mapEntry : params.entrySet()) {
@@ -38,6 +39,7 @@ public class FoodDetailsServlet extends HttpServlet {
 //				System.out.println("\t-> " + s);
 			}
 		}
+		*/
 		
 		// JSON-Array für die komplette Bestellung des Kunden
 		JSONArray completeOrderArray = new JSONArray();
