@@ -1,35 +1,69 @@
 package de.lebenshilfe.foodorder.daos;
 
-import org.hibernate.MappingException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.exception.ConstraintViolationException;
 
 import de.lebenshilfe.foodorder.utils.HibernateUtils;
+import jakarta.persistence.PersistenceException;
 
 public abstract class AbstractDao<T> {
 	
-	public void saveOrUpdateObject(T persistableObject) {
+	protected void saveObject(T object) {
 		SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		
 		Transaction tx = session.beginTransaction();
 		
 		try {
-			session.saveOrUpdate(persistableObject);
+//			session.saveOrUpdate(persistableObject);
+			session.persist(object);
 			tx.commit();
-		} catch (ConstraintViolationException cve) {
+		} catch (PersistenceException pe) {
 			tx.rollback();
-//			cve.printStackTrace();
-			System.out.println(cve);
-		} catch (MappingException me) {
-			tx.rollback();
-//			me.printStackTrace();
-			System.out.println(me);
+			pe.printStackTrace();
+//			System.out.println(pe);
 		} finally {
 			session.close();
 		}
+	}
+	
+	protected void updateObject(T object) {
+		SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		
+		Transaction tx = session.beginTransaction();
+		
+		try {
+//			session.saveOrUpdate(persistableObject);
+			session.merge(object);
+			tx.commit();
+		} catch (PersistenceException pe) {
+			tx.rollback();
+			pe.printStackTrace();
+//			System.out.println(pe);
+		} finally {
+			session.close();
+		}
+	}
+	
+	protected T getObjectById(Class<T> objectClass, Integer objectId) {
+		SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		
+		Transaction tx = session.beginTransaction();
+		T object = null;
+		
+		try {
+			object = session.byId(objectClass).load(objectId);
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println(e);
+		} finally {
+			session.close();
+		}
+		
+		return object;
 	}
 	
 }
