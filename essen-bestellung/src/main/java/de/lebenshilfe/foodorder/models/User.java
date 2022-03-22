@@ -1,6 +1,7 @@
 package de.lebenshilfe.foodorder.models;
 
 import de.lebenshilfe.foodorder.converters.RoleConverter;
+import de.lebenshilfe.foodorder.enums.Role;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
@@ -9,12 +10,6 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class User extends AbstractModel {
-	
-	/*
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer userId;
-	*/
 	
 	@Column
 	private String name;
@@ -25,9 +20,6 @@ public class User extends AbstractModel {
 	@Column
 	private String password;
 	
-//	@ManyToOne(cascade = CascadeType.ALL, optional = false)
-//	@Enumerated(EnumType.STRING)
-//	@Column
 	@Convert(converter = RoleConverter.class)
 	private Role role;
 	
@@ -36,11 +28,7 @@ public class User extends AbstractModel {
 	
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)
 	private Address billingAddress;
-
-//	public Integer getUserId() {
-//		return userId;
-//	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -64,11 +52,7 @@ public class User extends AbstractModel {
 	public Address getBillingAddress() {
 		return billingAddress;
 	}
-
-//	public void setUserId(Integer userId) {
-//		this.userId = userId;
-//	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}

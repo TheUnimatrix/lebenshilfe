@@ -2,16 +2,9 @@ package de.lebenshilfe.foodorder.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 @Entity
 public class Address extends AbstractModel {
-	
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private Integer addressId;
 	
 	@Column
 	private String street;
@@ -21,11 +14,7 @@ public class Address extends AbstractModel {
 	
 	@Column
 	private String city;
-
-//	public Integer getAddressId() {
-//		return addressId;
-//	}
-
+	
 	public String getStreet() {
 		return street;
 	}
@@ -37,11 +26,7 @@ public class Address extends AbstractModel {
 	public String getCity() {
 		return city;
 	}
-
-//	public void setAddressId(Integer addressId) {
-//		this.addressId = addressId;
-//	}
-
+	
 	public void setStreet(String street) {
 		this.street = street;
 	}
