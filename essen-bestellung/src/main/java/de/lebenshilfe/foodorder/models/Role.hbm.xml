@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping>
+	<class name="de.lebenshilfe.foodorder.models.Role">
+		
+		<!-- Primärschlüssel -->
+		<id name="roleId" type="java.lang.Integer">
+			<generator class="identity"/>
+		</id>
+		
+		<property name="name" type="java.lang.String" length="7"/>
+		
+	</class>
+</hibernate-mapping>
