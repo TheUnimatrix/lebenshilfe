@@ -5,7 +5,9 @@ import org.hibernate.service.spi.ServiceException;
 import de.lebenshilfe.foodorder.utils.HibernateUtils;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
 
+@WebListener
 public class HibernateConfigurationListener implements ServletContextListener {
 	
 	@Override
