@@ -5,8 +5,12 @@ import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.spi.ServiceException;
 
+import de.lebenshilfe.foodorder.daos.AddressDao;
 import de.lebenshilfe.foodorder.daos.UserDao;
 import de.lebenshilfe.foodorder.models.Address;
+import de.lebenshilfe.foodorder.models.FoodOrder;
+import de.lebenshilfe.foodorder.models.OrderPosition;
+import de.lebenshilfe.foodorder.models.Role;
 import de.lebenshilfe.foodorder.models.User;
 
 public class HibernateUtils {
@@ -14,10 +18,18 @@ public class HibernateUtils {
 	private static SessionFactory sessionFactory;
 
 	public static void initSessionFactory() throws ServiceException {
-		if (getSessionFactory() == null) {
+		if (sessionFactory == null) {
 			Configuration cfg = new Configuration();
 			cfg.setPhysicalNamingStrategy(
 					new CamelCaseToUnderscoresNamingStrategy());
+			
+			// Hinzufügen der Hibernate-Mappings (per Annotations)
+			cfg.addAnnotatedClass(Address.class);
+			cfg.addAnnotatedClass(FoodOrder.class);
+			cfg.addAnnotatedClass(OrderPosition.class);
+			cfg.addAnnotatedClass(Role.class);
+			cfg.addAnnotatedClass(User.class);
+			
 			cfg = cfg.configure();
 
 			sessionFactory = cfg.buildSessionFactory();
@@ -43,28 +55,52 @@ public class HibernateUtils {
 		addr4.setPostalCode("07907");
 		addr4.setCity("Schleiz");
 		
+		Address addr5 = new Address();
+		addr5.setStreet("Löhmaer Weg 13");
+		addr5.setPostalCode("07907");
+		addr5.setCity("Schleiz");
+		
+		Role user = new Role();
+		user.setName("user");
+		
+		Role admin = new Role();
+		admin.setName("admin");
+		
+		Role manager = new Role();
+		manager.setName("manager");
+		
 		User c1 = new User();
 		c1.setName("Tagesstätte Schleiz");
 		c1.setEmail("ts-scz@example.com");
 		c1.setDeliveryAddress(addr2);
 		c1.setBillingAddress(addr1);
+		c1.setRole(user);
 		
 		User c2 = new User();
 		c2.setName("Schleizer Werkstätten gGmbH");
 		c2.setEmail("wfbm-scz@example.com");
 		c2.setDeliveryAddress(addr1);
 		c2.setBillingAddress(addr1);
+		c2.setRole(user);
+		
+		User c3 = new User();
+		c3.setName("Sebastian");
+		c3.setEmail("segi@example.com");
+		c3.setDeliveryAddress(addr5);
+		c3.setBillingAddress(addr5);
+		c3.setRole(admin);
 		
 		UserDao cDao = new UserDao();
-		cDao.insertUser(c1);
-		cDao.insertUser(c2);
+		cDao.saveOrUpdateUser(c1);
+		cDao.saveOrUpdateUser(c2);
+		cDao.saveOrUpdateUser(c3);
 		
-//		AddressDao addrDao = new AddressDao();
+		AddressDao addrDao = new AddressDao();
 //		addrDao.saveOrUpdateAddress(addr1);
 //		addrDao.saveOrUpdateAddress(addr1);
 //		addrDao.saveOrUpdateAddress(addr2);
-//		addrDao.saveOrUpdateAddress(addr3);
-//		addrDao.saveOrUpdateAddress(addr4);
+		addrDao.saveOrUpdateAddress(addr3);
+		addrDao.saveOrUpdateAddress(addr4);
 	}
 
 	public static SessionFactory getSessionFactory() {
@@ -72,8 +108,9 @@ public class HibernateUtils {
 	}
 
 	public static void closeSessionFactory() {
-		if (sessionFactory != null)
+		if (sessionFactory != null) {
 			sessionFactory.close();
+		}
 	}
 
 }

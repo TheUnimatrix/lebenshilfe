@@ -2,21 +2,38 @@ package de.lebenshilfe.foodorder.models;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class OrderPosition {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderPositionId;
 	
-	private FoodOrder foodOrder;
-	
+	@Column
 	private String food;
 	
+	@Column
 	private Double price;
 	
+	@Column
 	private Integer amount;
 	
+	@Column
 	private LocalDate foodDate;
 	
+	@Column
 	private Integer foodId;
+	
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	private FoodOrder foodOrder;
 	
 	public Integer getOrderPositionId() {
 		return orderPositionId;

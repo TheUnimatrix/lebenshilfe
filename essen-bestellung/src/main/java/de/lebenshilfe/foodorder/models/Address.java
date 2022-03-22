@@ -1,13 +1,25 @@
 package de.lebenshilfe.foodorder.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Address {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer addressId;
 	
+	@Column
 	private String street;
 	
+	@Column
 	private String postalCode;
 	
+	@Column
 	private String city;
 
 	public Integer getAddressId() {
@@ -41,7 +53,5 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
-	
 	
 }
