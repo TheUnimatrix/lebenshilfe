@@ -1,2 +1,8 @@
+# zu ignorierende Ordner
+/.settings/
 /target/
 /Development/
+
+# zu ignorierende Dateien
+.classpath
+.project
