@@ -2,20 +2,20 @@ package de.lebenshilfe.foodorder.models;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class FoodOrder {
+public class FoodOrder extends AbstractModel {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer orderId;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private Integer orderId;
 	
 	@Column
 	private LocalDateTime orderDateTime;
@@ -23,9 +23,9 @@ public class FoodOrder {
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)
 	private User user;
 	
-	public Integer getOrderId() {
-		return orderId;
-	}
+//	public Integer getOrderId() {
+//		return orderId;
+//	}
 
 	public LocalDateTime getOrderDateTime() {
 		return orderDateTime;
@@ -35,9 +35,9 @@ public class FoodOrder {
 		return user;
 	}
 
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
-	}
+//	public void setOrderId(Integer orderId) {
+//		this.orderId = orderId;
+//	}
 
 	public void setOrderDateTime(LocalDateTime orderDateTime) {
 		this.orderDateTime = orderDateTime;

@@ -2,20 +2,20 @@ package de.lebenshilfe.foodorder.models;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class OrderPosition {
+public class OrderPosition extends AbstractModel {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer orderPositionId;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private Integer orderPositionId;
 	
 	@Column
 	private String food;
@@ -35,9 +35,9 @@ public class OrderPosition {
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)
 	private FoodOrder foodOrder;
 	
-	public Integer getOrderPositionId() {
-		return orderPositionId;
-	}
+//	public Integer getOrderPositionId() {
+//		return orderPositionId;
+//	}
 
 	public FoodOrder getFoodOrder() {
 		return foodOrder;
@@ -63,9 +63,9 @@ public class OrderPosition {
 		return foodId;
 	}
 
-	public void setOrderPositionId(Integer orderPositionId) {
-		this.orderPositionId = orderPositionId;
-	}
+//	public void setOrderPositionId(Integer orderPositionId) {
+//		this.orderPositionId = orderPositionId;
+//	}
 
 	public void setFoodOrder(FoodOrder foodOrder) {
 		this.foodOrder = foodOrder;

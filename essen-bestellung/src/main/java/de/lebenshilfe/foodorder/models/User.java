@@ -1,20 +1,22 @@
 package de.lebenshilfe.foodorder.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class User {
+public class User extends AbstractModel {
 	
+	/*
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userId;
+	*/
 	
 	@Column
 	private String name;
@@ -25,21 +27,18 @@ public class User {
 	@Column
 	private String password;
 	
-	@JoinColumn(name = "role")
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)
 	private Role role;
 	
-	@JoinColumn(name = "deliveryAddress")
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)
 	private Address deliveryAddress;
 	
-	@JoinColumn(name = "billingAddress")
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)
 	private Address billingAddress;
 
-	public Integer getUserId() {
-		return userId;
-	}
+//	public Integer getUserId() {
+//		return userId;
+//	}
 
 	public String getName() {
 		return name;
@@ -65,9 +64,9 @@ public class User {
 		return billingAddress;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+//	public void setUserId(Integer userId) {
+//		this.userId = userId;
+//	}
 
 	public void setName(String name) {
 		this.name = name;
