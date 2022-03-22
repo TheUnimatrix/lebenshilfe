@@ -2,25 +2,19 @@ package de.lebenshilfe.foodorder.daos;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import de.lebenshilfe.foodorder.models.User;
 import de.lebenshilfe.foodorder.utils.HibernateUtils;
 
-public class UserDao {
+public class UserDao extends AbstractDao<User> {
 	
-	public void insertUser(User user) {
-		SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-		Session session = sessionFactory.openSession();
-		
-		Transaction tx = session.beginTransaction();
-		session.save(user);
-		tx.commit();
-		
-		session.close();
+	public void saveOrUpdateUser(User user) {
+		if (user != null) {
+			super.saveOrUpdateObject(user);
+		}
 	}
 	
-	public User getUserByUserId(Long userId) {
+	public User getUserByUserId(Integer userId) {
 		SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		

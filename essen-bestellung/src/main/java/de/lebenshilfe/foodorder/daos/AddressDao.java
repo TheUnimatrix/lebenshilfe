@@ -7,9 +7,12 @@ import org.hibernate.Transaction;
 import de.lebenshilfe.foodorder.models.Address;
 import de.lebenshilfe.foodorder.utils.HibernateUtils;
 
-public class AddressDao {
+public class AddressDao extends AbstractDao<Address> {
 
 	public void saveOrUpdateAddress(Address address) {
+		super.saveOrUpdateObject(address);
+		
+		/*
 		SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		
@@ -18,6 +21,7 @@ public class AddressDao {
 		tx.commit();
 		
 		session.close();
+		*/
 	}
 
 }
