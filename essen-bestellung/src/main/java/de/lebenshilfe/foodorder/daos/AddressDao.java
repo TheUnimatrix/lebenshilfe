@@ -1,27 +1,31 @@
 package de.lebenshilfe.foodorder.daos;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-
 import de.lebenshilfe.foodorder.models.Address;
-import de.lebenshilfe.foodorder.utils.HibernateUtils;
 
 public class AddressDao extends AbstractDao<Address> {
 
 	public void saveOrUpdateAddress(Address address) {
-		super.saveOrUpdateObject(address);
+		if (address != null) {
+			
+			Integer addressId = address.getId();
+//			System.out.println(addressId);
+			
+			if (addressId == null) {
+				super.saveObject(address);
+			} else {
+				super.updateObject(address);
+			}
+		}
+	}
+	
+	public Address getAddressById(Integer addressId) {
+		Address address = null;
 		
-		/*
-		SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		if (addressId != null) {
+			address = super.getObjectById(Address.class, addressId);
+		}
 		
-		Transaction tx = session.beginTransaction();
-		session.saveOrUpdate(address);
-		tx.commit();
-		
-		session.close();
-		*/
+		return address;
 	}
 
 }

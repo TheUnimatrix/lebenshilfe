@@ -10,7 +10,7 @@ public class UserDao extends AbstractDao<User> {
 	
 	public void saveOrUpdateUser(User user) {
 		if (user != null) {
-			super.saveOrUpdateObject(user);
+			super.updateObject(user);
 		}
 	}
 	
@@ -19,7 +19,7 @@ public class UserDao extends AbstractDao<User> {
 		Session session = sessionFactory.openSession();
 		
 //		Transaction tx = session.beginTransaction();
-		User user = session.get(User.class, userId);
+		User user = session.byId(User.class).load(userId);
 		
 //		tx.commit();
 		session.close();
