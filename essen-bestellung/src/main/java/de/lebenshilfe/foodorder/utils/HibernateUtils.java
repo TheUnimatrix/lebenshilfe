@@ -6,6 +6,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.spi.ServiceException;
 
 import de.lebenshilfe.foodorder.daos.AddressDao;
+import de.lebenshilfe.foodorder.daos.RoleDao;
 import de.lebenshilfe.foodorder.daos.UserDao;
 import de.lebenshilfe.foodorder.models.Address;
 import de.lebenshilfe.foodorder.models.FoodOrder;
@@ -60,6 +61,13 @@ public class HibernateUtils {
 		addr5.setPostalCode("07907");
 		addr5.setCity("Schleiz");
 		
+		AddressDao addrDao = new AddressDao();
+		addrDao.saveOrUpdateAddress(addr1);
+		addrDao.saveOrUpdateAddress(addr1);
+		addrDao.saveOrUpdateAddress(addr2);
+		addrDao.saveOrUpdateAddress(addr3);
+		addrDao.saveOrUpdateAddress(addr4);
+		
 		Role user = new Role();
 		user.setName("user");
 		
@@ -68,6 +76,11 @@ public class HibernateUtils {
 		
 		Role manager = new Role();
 		manager.setName("manager");
+		
+		RoleDao roleDao = new RoleDao();
+		roleDao.saveOrUpdateRole(user);
+		roleDao.saveOrUpdateRole(manager);
+		roleDao.saveOrUpdateRole(admin);
 		
 		User c1 = new User();
 		c1.setName("Tagesstätte Schleiz");
@@ -94,13 +107,6 @@ public class HibernateUtils {
 		cDao.saveOrUpdateUser(c1);
 		cDao.saveOrUpdateUser(c2);
 		cDao.saveOrUpdateUser(c3);
-		
-		AddressDao addrDao = new AddressDao();
-//		addrDao.saveOrUpdateAddress(addr1);
-//		addrDao.saveOrUpdateAddress(addr1);
-//		addrDao.saveOrUpdateAddress(addr2);
-		addrDao.saveOrUpdateAddress(addr3);
-		addrDao.saveOrUpdateAddress(addr4);
 	}
 
 	public static SessionFactory getSessionFactory() {
