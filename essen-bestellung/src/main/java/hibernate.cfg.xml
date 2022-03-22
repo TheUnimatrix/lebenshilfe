@@ -15,14 +15,5 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
         <property name="hbm2ddl.auto">create</property>
-        
-		<!-- Hibernate-Mappings -->
-        <!--
-        <mapping resource="de/lebenshilfe/foodorder/models/OrderPosition.hbm.xml"/>
-        <mapping resource="de/lebenshilfe/foodorder/models/FoodOrder.hbm.xml"/>
-        <mapping resource="de/lebenshilfe/foodorder/models/Address.hbm.xml"/>
-        <mapping resource="de/lebenshilfe/foodorder/models/User.hbm.xml"/>
-        <mapping resource="de/lebenshilfe/foodorder/models/Role.hbm.xml"/>
-        -->
 	</session-factory>
 </hibernate-configuration>
