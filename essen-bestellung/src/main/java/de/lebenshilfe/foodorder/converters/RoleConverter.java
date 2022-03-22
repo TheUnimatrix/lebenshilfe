@@ -1,6 +1,6 @@
 package de.lebenshilfe.foodorder.converters;
 
-import de.lebenshilfe.foodorder.models.Role;
+import de.lebenshilfe.foodorder.enums.Role;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
