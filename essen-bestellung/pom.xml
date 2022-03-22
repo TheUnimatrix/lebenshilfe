@@ -13,9 +13,8 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>essen-bestellung Maven Webapp</name>
-	<!-- FIXME change it to the project's website -->
-	<url>http://www.example.com</url>
+	<name>Essenbestellung bei Schleizer Werkstätten gGmbH</name>
+	<url>https://www.schleizer-werkstaetten.de</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
