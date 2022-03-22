@@ -1,103 +1,77 @@
 package de.lebenshilfe.foodorder.models;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
-public class OrderPosition implements Serializable {
-	
-	/** serialVersionUID */
-	private static final long serialVersionUID = 1L;
+public class OrderPosition {
 	
 	private Integer orderPositionId;
+	
+	private FoodOrder foodOrder;
+	
+	private String food;
+	
+	private Double price;
+	
+	private Integer amount;
+	
+	private LocalDate foodDate;
+	
+	private Integer foodId;
 	
 	public Integer getOrderPositionId() {
 		return orderPositionId;
 	}
-	
-	public void setOrderPositionId(Integer orderPositionId) {
-		this.orderPositionId = orderPositionId;
-	}
 
-	private FoodOrder foodOrder;
-	
-	private int position;
-	
-	private String food;
-	
-	private double price;
-	
-	private int amount;
-	
-	private LocalDate foodDate;
-	
-	private int day;
-	
-	private int foodId;
-	
 	public FoodOrder getFoodOrder() {
 		return foodOrder;
-	}
-
-	public int getPosition() {
-		return position;
 	}
 
 	public String getFood() {
 		return food;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	
-	public int getAmount() {
+
+	public Integer getAmount() {
 		return amount;
 	}
-	
+
 	public LocalDate getFoodDate() {
 		return foodDate;
 	}
-	
-	public int getFoodId() {
+
+	public Integer getFoodId() {
 		return foodId;
+	}
+
+	public void setOrderPositionId(Integer orderPositionId) {
+		this.orderPositionId = orderPositionId;
 	}
 
 	public void setFoodOrder(FoodOrder foodOrder) {
 		this.foodOrder = foodOrder;
 	}
 
-	public void setPosition(int position) {
-		this.position = position;
-	}
-
 	public void setFood(String food) {
 		this.food = food;
 	}
-	
-	public void setPrice(double price) {
+
+	public void setPrice(Double price) {
 		this.price = price;
 	}
-	
-	public void setAmount(int amount) {
+
+	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
-	
+
 	public void setFoodDate(LocalDate foodDate) {
 		this.foodDate = foodDate;
 	}
-	
-	public void setFoodId(int foodId) {
+
+	public void setFoodId(Integer foodId) {
 		this.foodId = foodId;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		return super.equals(obj);
-	}
-	
-	@Override
-	public int hashCode() {
-		return super.hashCode();
 	}
 	
 }
