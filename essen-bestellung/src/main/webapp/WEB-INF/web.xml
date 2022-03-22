@@ -8,36 +8,6 @@
 	
 	<display-name>Essenbestellung</display-name>
 	
-	<listener>
-		<listener-class>de.lebenshilfe.foodorder.listeners.HibernateConfigurationListener</listener-class>
-	</listener>
-	
-	<servlet>
-		<servlet-name>start-page-servlet</servlet-name>
-		<servlet-class>de.lebenshilfe.foodorder.servlets.StartPageServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>food-details-servlet</servlet-name>
-		<servlet-class>de.lebenshilfe.foodorder.servlets.FoodDetailsServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>order-persistence-servlet</servlet-name>
-		<servlet-class>de.lebenshilfe.foodorder.servlets.OrderPersistenceServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>start-page-servlet</servlet-name>
-		<url-pattern>/startseite.html</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>food-details-servlet</servlet-name>
-		<url-pattern>/uebersicht.html</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>order-persistence-servlet</servlet-name>
-		<url-pattern>/abschluss.html</url-pattern>
-	</servlet-mapping>
-	
 	<error-page>
 		<!-- Fehlerseite für HTTP-Statuscode 404 (Seite nicht gefunden) -->
 		<error-code>404</error-code>
