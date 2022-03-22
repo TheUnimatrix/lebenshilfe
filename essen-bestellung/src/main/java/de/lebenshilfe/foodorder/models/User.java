@@ -1,12 +1,10 @@
 package de.lebenshilfe.foodorder.models;
 
+import de.lebenshilfe.foodorder.converters.RoleConverter;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -27,7 +25,10 @@ public class User extends AbstractModel {
 	@Column
 	private String password;
 	
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+//	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+//	@Enumerated(EnumType.STRING)
+//	@Column
+	@Convert(converter = RoleConverter.class)
 	private Role role;
 	
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)

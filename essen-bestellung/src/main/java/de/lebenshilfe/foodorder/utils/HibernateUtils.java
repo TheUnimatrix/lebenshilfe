@@ -68,6 +68,7 @@ public class HibernateUtils {
 		addrDao.saveOrUpdateAddress(addr3);
 		addrDao.saveOrUpdateAddress(addr4);
 		
+		/*
 		Role user = new Role();
 		user.setName("user");
 		
@@ -76,37 +77,48 @@ public class HibernateUtils {
 		
 		Role manager = new Role();
 		manager.setName("manager");
+		*/
 		
+		/*
 		RoleDao roleDao = new RoleDao();
-		roleDao.saveOrUpdateRole(user);
+		roleDao.saveOrUpdateRole(Role.USER);
 		roleDao.saveOrUpdateRole(manager);
 		roleDao.saveOrUpdateRole(admin);
+		*/
 		
 		User c1 = new User();
 		c1.setName("Tagesstätte Schleiz");
 		c1.setEmail("ts-scz@example.com");
 		c1.setDeliveryAddress(addr2);
 		c1.setBillingAddress(addr1);
-		c1.setRole(user);
+		c1.setRole(Role.USER);
 		
 		User c2 = new User();
 		c2.setName("Schleizer Werkstätten gGmbH");
 		c2.setEmail("wfbm-scz@example.com");
 		c2.setDeliveryAddress(addr1);
 		c2.setBillingAddress(addr1);
-		c2.setRole(user);
+		c2.setRole(Role.USER);
 		
 		User c3 = new User();
 		c3.setName("Sebastian");
 		c3.setEmail("segi@example.com");
 		c3.setDeliveryAddress(addr5);
 		c3.setBillingAddress(addr5);
-		c3.setRole(admin);
+		c3.setRole(Role.ADMIN);
+		
+		User c4 = new User();
+		c4.setName("Frau Wetzel");
+		c4.setEmail("frwe@example.com");
+		c4.setDeliveryAddress(addr1);
+		c4.setBillingAddress(addr1);
+		c4.setRole(Role.MANAGER);
 		
 		UserDao cDao = new UserDao();
 		cDao.saveOrUpdateUser(c1);
 		cDao.saveOrUpdateUser(c2);
 		cDao.saveOrUpdateUser(c3);
+		cDao.saveOrUpdateUser(c4);
 	}
 
 	public static SessionFactory getSessionFactory() {

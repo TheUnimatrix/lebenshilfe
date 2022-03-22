@@ -2,34 +2,33 @@ package de.lebenshilfe.foodorder.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-@Entity
-public class Role extends AbstractModel {
+//@Entity
+public enum Role {//extends AbstractModel {
 	
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private Integer roleId;
+//	@Column(length = 7, unique = true)
+//	private String name;
 	
-	@Column(length = 7, unique = true)
-	private String name;
-
-//	public Integer getRoleId() {
-//		return roleId;
+//	public String getName() {
+//		return name;
 //	}
 
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+	
+	USER("USER"),
+	MANAGER("MANAGER"),
+	ADMIN("ADMIN");
+	
+	private String name;
+	
+	private Role(String name) {
+		this.name = name;
+	}
+	
 	public String getName() {
 		return name;
-	}
-
-//	public void setRoleId(Integer roleId) {
-//		this.roleId = roleId;
-//	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 }

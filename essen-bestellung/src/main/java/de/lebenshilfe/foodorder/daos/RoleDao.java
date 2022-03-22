@@ -4,6 +4,7 @@ import de.lebenshilfe.foodorder.models.Role;
 
 public class RoleDao extends AbstractDao<Role> {
 	
+	/*
 	public void saveOrUpdateRole(Role role) {
 		if (role != null) {
 			
@@ -27,5 +28,5 @@ public class RoleDao extends AbstractDao<Role> {
 		
 		return role;
 	}
-	
+	*/
 }
