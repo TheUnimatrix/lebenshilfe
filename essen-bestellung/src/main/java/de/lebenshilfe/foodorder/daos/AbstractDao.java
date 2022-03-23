@@ -19,10 +19,10 @@ public abstract class AbstractDao<T> {
 //			session.saveOrUpdate(persistableObject);
 			session.persist(object);
 			tx.commit();
-		} catch (PersistenceException pe) {
+		} catch (PersistenceException e) {
 			tx.rollback();
-			pe.printStackTrace();
-//			System.out.println(pe);
+			e.printStackTrace();
+			System.out.println(e);
 		} finally {
 			session.close();
 		}
