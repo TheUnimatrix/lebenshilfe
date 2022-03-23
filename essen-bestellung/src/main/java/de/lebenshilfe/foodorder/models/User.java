@@ -11,13 +11,13 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class User extends AbstractModel {
 	
-	@Column
+	@Column(length = 30)
 	private String name;
 	
-	@Column
+	@Column(length = 30)
 	private String email;
 	
-	@Column
+	@Column(length = 60)
 	private String password;
 	
 	@Convert(converter = RoleConverter.class)
