@@ -60,31 +60,6 @@ public class HibernateUtils {
 		addr5.setPostalCode("07907");
 		addr5.setCity("Schleiz");
 		
-		AddressDao addrDao = new AddressDao();
-		addrDao.saveOrUpdateAddress(addr1);
-		addrDao.saveOrUpdateAddress(addr1);
-		addrDao.saveOrUpdateAddress(addr2);
-		addrDao.saveOrUpdateAddress(addr3);
-		addrDao.saveOrUpdateAddress(addr4);
-		
-		/*
-		Role user = new Role();
-		user.setName("user");
-		
-		Role admin = new Role();
-		admin.setName("admin");
-		
-		Role manager = new Role();
-		manager.setName("manager");
-		*/
-		
-		/*
-		RoleDao roleDao = new RoleDao();
-		roleDao.saveOrUpdateRole(Role.USER);
-		roleDao.saveOrUpdateRole(manager);
-		roleDao.saveOrUpdateRole(admin);
-		*/
-		
 		User c1 = new User();
 		c1.setName("Tagesstätte Schleiz");
 		c1.setEmail("ts-scz@example.com");
@@ -112,6 +87,13 @@ public class HibernateUtils {
 		c4.setDeliveryAddress(addr1);
 		c4.setBillingAddress(addr1);
 		c4.setRole(Role.MANAGER);
+		
+		AddressDao addrDao = new AddressDao();
+		addrDao.saveOrUpdateAddress(addr1);
+		addrDao.saveOrUpdateAddress(addr1);
+		addrDao.saveOrUpdateAddress(addr2);
+		addrDao.saveOrUpdateAddress(addr3);
+		addrDao.saveOrUpdateAddress(addr4);
 		
 		UserDao cDao = new UserDao();
 		cDao.saveOrUpdateUser(c1);
