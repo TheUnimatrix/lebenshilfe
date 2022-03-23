@@ -1,4 +1,4 @@
 <%
 // Redirect auf das Servlet
-response.sendRedirect("startseite.html");
+response.sendRedirect("login.html");
 %>
