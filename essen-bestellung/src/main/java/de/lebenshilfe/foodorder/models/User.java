@@ -6,6 +6,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -14,31 +15,38 @@ public class User extends AbstractModel {
 	@Column(length = 30)
 	private String name;
 	
-	@Column(length = 30)
+	@Column(length = 30, unique = true)
 	private String email;
 	
 	@Column(length = 60)
 	private String password;
 	
+	@Column(nullable = false)
+	private Integer priceGroup;
+	
 	@Convert(converter = RoleConverter.class)
 	private Role role;
 	
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = false)
 	private Address deliveryAddress;
 	
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = false)
 	private Address billingAddress;
 	
 	public String getName() {
 		return name;
 	}
-
+	
 	public String getEmail() {
 		return email;
 	}
 
 	public String getPassword() {
 		return password;
+	}
+	
+	public Integer getPriceGroup() {
+		return priceGroup;
 	}
 	
 	public Role getRole() {
@@ -63,6 +71,10 @@ public class User extends AbstractModel {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public void setPriceGroup(Integer priceGroup) {
+		this.priceGroup = priceGroup;
 	}
 	
 	public void setRole(Role role) {
