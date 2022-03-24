@@ -3,11 +3,13 @@ package de.lebenshilfe.foodorder.servlets;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import de.lebenshilfe.foodorder.daos.OrderPositionDao;
+import de.lebenshilfe.foodorder.daos.FoodOrderDao;
 import de.lebenshilfe.foodorder.models.FoodOrder;
 import de.lebenshilfe.foodorder.models.OrderPosition;
 import de.lebenshilfe.foodorder.models.User;
@@ -23,22 +25,37 @@ public class OrderPersistenceServlet extends HttpServlet {
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
 	
+	private FoodOrderDao foodOrderDao = new FoodOrderDao();
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		// Hole aktuellen Benutzer aus Session
+		User user = (User)req.getSession().getAttribute("user");
+		
+		if (user == null) {
+			// Weiterleiten auf Login-Seite und Abbrechen der Methode
+			resp.sendRedirect("login.html");
+			return;
+		}
+		
+		// Weiterleiten auf Startseite
+		resp.sendRedirect("startseite.html");
+	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		JSONArray orderArray = (JSONArray)req.getSession().getAttribute("order-array");
 		User currentUser = (User)req.getSession().getAttribute("user");
 		
-//		System.out.println(currentUser);
-		
-		OrderPositionDao orderPositionDao = new OrderPositionDao();
-		
 		FoodOrder foodOrder = new FoodOrder();
 		foodOrder.setOrderDateTime(LocalDateTime.now());
 		foodOrder.setUser(currentUser);
 		
+		List<OrderPosition> orderPositions = new ArrayList<OrderPosition>();
 		
-		System.out.println(orderArray);
+		
 		
 		
 		
@@ -61,14 +78,13 @@ public class OrderPersistenceServlet extends HttpServlet {
 				currentOrderPosition.setFoodId(foodId);				
 				currentOrderPosition.setAmount(amount);
 				currentOrderPosition.setPrice(price);
-				currentOrderPosition.setFoodOrder(foodOrder);
 				
-				orderPositionDao.saveOrUpdateOrderPosition(currentOrderPosition);
+				orderPositions.add(currentOrderPosition);
 			}
 		}
 		
-//		FoodOrderDao foodOrderDao = new FoodOrderDao();
-//		foodOrderDao.saveOrUpdateObject(foodOrder);
+		foodOrder.setOrderPositions(orderPositions);
+		foodOrderDao.saveOrUpdateFoodOrder(foodOrder);
 		
 		resp.sendRedirect("startseite.html");
 	}
