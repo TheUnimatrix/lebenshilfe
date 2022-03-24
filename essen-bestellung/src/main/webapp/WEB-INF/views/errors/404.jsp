@@ -17,7 +17,8 @@
 			<h1>404 - Seite nicht gefunden</h1>
 			<p>
 				Die von Ihnen gewünschte Seite konnte nicht gefunden werden.
-				Über <a href="startseite.html">diesen Link</a> kommen Sie wieder auf die Startseite zurück.
+				Über <a href="${pageContext.request.contextPath}/startseite.html">diesen Link</a>
+				kommen Sie wieder auf die Startseite zurück.
 			</p>
 		</div>
 	</body>
