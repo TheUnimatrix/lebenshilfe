@@ -18,6 +18,7 @@ public abstract class AbstractDao<T> {
 		try {
 //			session.saveOrUpdate(persistableObject);
 			session.persist(object);
+			session.flush();
 			tx.commit();
 		} catch (PersistenceException e) {
 			tx.rollback();
@@ -37,11 +38,12 @@ public abstract class AbstractDao<T> {
 		try {
 //			session.saveOrUpdate(persistableObject);
 			session.merge(object);
+			session.flush();
 			tx.commit();
-		} catch (PersistenceException pe) {
+		} catch (PersistenceException e) {
 			tx.rollback();
-			pe.printStackTrace();
-//			System.out.println(pe);
+			e.printStackTrace();
+//			System.out.println(e);
 		} finally {
 			session.close();
 		}
