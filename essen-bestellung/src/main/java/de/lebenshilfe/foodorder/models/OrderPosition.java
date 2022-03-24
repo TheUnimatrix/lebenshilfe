@@ -2,10 +2,8 @@ package de.lebenshilfe.foodorder.models;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class OrderPosition extends AbstractModel {
@@ -25,13 +23,6 @@ public class OrderPosition extends AbstractModel {
 	@Column
 	private Integer foodId;
 	
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
-	private FoodOrder foodOrder;
-	
-	public FoodOrder getFoodOrder() {
-		return foodOrder;
-	}
-
 	public String getFood() {
 		return food;
 	}
@@ -52,10 +43,6 @@ public class OrderPosition extends AbstractModel {
 		return foodId;
 	}
 	
-	public void setFoodOrder(FoodOrder foodOrder) {
-		this.foodOrder = foodOrder;
-	}
-
 	public void setFood(String food) {
 		this.food = food;
 	}
