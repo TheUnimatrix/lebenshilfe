@@ -9,7 +9,6 @@ import java.util.GregorianCalendar;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import de.lebenshilfe.foodorder.daos.UserDao;
 import de.lebenshilfe.foodorder.models.User;
 import de.lebenshilfe.foodorder.utils.JSONUtils;
 import jakarta.servlet.ServletException;
@@ -19,21 +18,36 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/startseite.html")
-public class StartPageServlet extends HttpServlet {
+public class FoodTableServlet extends HttpServlet {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		UserDao userDao = new UserDao();
-		User user = userDao.getUserByUserId(1);
 		
-//		System.out.println(user);
+		// Hole aktuellen Benutzer aus Session
+		User user = (User)req.getSession().getAttribute("user");
 		
-		// Speichere Nutzer in Session ab
-		req.getSession().setAttribute("user", user);
+		if (user == null) {
+			// Weiterleiten auf Login-Seite und Abbrechen der Methode
+			resp.sendRedirect("login.html");
+			return;
+		}
 		
+		// Holen der Preisgruppe
+		Integer priceGroup = user.getPriceGroup();
+		
+		if (priceGroup == null) {
+			// TODO Eine Alternative finden; dürfte nicht eintreffen, weil Preisgruppe = not-null
+			return;
+		}
+		
+		// Abrufen der JSON-Tabelle anhand der Preisgruppe
+		JSONArray jsonArray = this.getWeeklyFoodForPriceGroup(priceGroup);
+		req.setAttribute("food", jsonArray);
+		
+		// Anzeigen der Startseite
 		req.getRequestDispatcher("/WEB-INF/views/startseite.jsp").forward(req, resp);
 	}
 
@@ -46,15 +60,15 @@ public class StartPageServlet extends HttpServlet {
 		// Falls ein Wert ausgewählt wurde, wird die URL erstellt und ausgelesen
 		if (priceGroup != null) {
 
-			JSONArray jsonArray = this.getWeeklyFoodForPriceGroup(priceGroup);
-			req.setAttribute("food", jsonArray);
+//			JSONArray jsonArray = this.getWeeklyFoodForPriceGroup(priceGroup);
+//			req.setAttribute("food", jsonArray);
 		}
 
 		// Leite Benutzer wieder auf "startseite.jsp" weiter
 		req.getRequestDispatcher("/WEB-INF/views/startseite.jsp").forward(req, resp);
 	}
 	
-	private JSONArray getWeeklyFoodForPriceGroup(String priceGroup) {
+	private JSONArray getWeeklyFoodForPriceGroup(Integer priceGroup) {
 		
 		Calendar nextMonday = this.getNextMonday();
 		DateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
